@@ -1,0 +1,315 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+
+/* Add this to your existing CSS */
+.modal-content .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.modal-content .form-group input[type="date"],
+.modal-content .form-group input[type="time"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #333;
+    color: var(--text-dark);
+}
+/* Add this to your existing CSS */
+.moving-car {
+    position: fixed;
+    bottom: 0;
+    left: -200px; /* Start off-screen */
+    width: 200px; /* Adjust based on your car image size */
+    height: 100px; /* Adjust based on your car image size */
+    background-image: url('https://www.freeiconspng.com/uploads/car-png-27.png'); /* Ensure this path is correct */
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 0; /* Adjust this value as needed */
+    animation: moveCar 15s linear ;
+    /*border: 2px solid red; /* Temporary border for debugging */
+}
+
+@keyframes moveCar {
+    0% {
+        left: -200px; /* Start off-screen */
+    }
+    100% {
+        left: 100%; /* Move to the right edge of the screen */
+    }
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+    .moving-car {
+        width: 150px; /* Smaller car for mobile */
+        height: 75px;
+        animation: moveCar 10s linear infinite; /* Faster animation for smaller screens */
+    }
+}
+
+
+
+/* Deepseek Theme Colors */
+:root {
+    --primary-color: #1a73e8; /* Deepseek Blue */
+    --secondary-color: #0f4c75; /* Dark Blue */
+    --background-dark: #121212; /* Dark Background */
+    --background-light: #f5f5f5; /* Light Background */
+    --text-dark: #ffffff; /* White Text */
+    --text-light: #333333; /* Dark Text */
+    --gradient: linear-gradient(135deg, #1a73e8, #0f4c75); /* Gradient */
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+body.dark-mode .navbar {
+    background-color: var(--secondary-color);
+}
+
+body.dark-mode .ride-form,
+body.dark-mode .ride-card,
+body.dark-mode .modal-content {
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="number"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="password"] {
+    background-color: #333;
+    color: var(--text-dark);
+    border: 1px solid #444;
+}
+
+/* Light Mode */
+body.light-mode {
+    background-color: var(--background-light);
+    color: var(--text-light);
+}
+
+body.light-mode .navbar {
+    background-color: var(--primary-color);
+    color: var(--text-dark);
+}
+
+body.light-mode .ride-form,
+body.light-mode .ride-card,
+body.light-mode .modal-content {
+    background-color: #ffffff;
+    color: var(--text-light);
+    border: 1px solid #ddd;
+}
+
+body.light-mode input[type="text"],
+body.light-mode input[type="number"],
+body.light-mode input[type="email"],
+body.light-mode input[type="password"] {
+    background-color: #ffffff;
+    color: var(--text-light);
+    border: 1px solid #ddd;
+}
+
+/* Common Styles */
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+.left-side {
+    flex: 1;
+}
+
+.right-side {
+    flex: 1;
+}
+
+.navbar {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--gradient);
+    color: var(--text-dark);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.left-corner, .right-corner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#help-btn, #drive-btn, #signup-btn, #language-select {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#language-select {
+    background-color: transparent;
+    color: inherit;
+    border: 1px solid var(--primary-color);
+}
+
+#help-btn:hover, #drive-btn:hover, #signup-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.ride-form {
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+input[type="text"], input[type="number"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+.map-container {
+    height: 600px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.ride-list {
+    margin-top: 2rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.ride-card {
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    margin-top: 1rem;
+}
+
+.modal-content a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .map-container {
+        height: 300px;
+    }
+
+    .left-corner, .right-corner {
+        gap: 5px;
+    }
+
+    #help-btn, #drive-btn, #signup-btn, #language-select {
+        padding: 0.3rem 0.6rem;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}

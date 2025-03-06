@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityRide - Ride Sharing</title>
+    <link rel="stylesheet" href="stylesride.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="dark-mode">
+    <div class="animated-bg"></div>
+    <div class="moving-car"></div> <!-- Moving Car Animation -->
+    <nav class="navbar">
+        <div class="left-corner">
+            <button id="help-btn" onclick="showHelp()"><i class="fas fa-question-circle"></i> Help</button>
+            <button id="drive-btn" onclick="toggleDriveModal(true)"><i class="fas fa-car"></i> Drive</button>
+        </div>
+        <h1>CityRide</h1>
+        <div class="nav-links">
+            <a href="#book">Book Ride</a>
+            <a href="#login" onclick="toggleLoginModal(true)">Login</a>
+            <div class="right-corner">
+                <button id="signup-btn" onclick="toggleSignupModal(true)">Signup</button>
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="te">తెలుగు</option>
+                </select>
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i> <!-- Moon icon for dark mode -->
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Left Side: Ride Booking Form -->
+        <div class="left-side">
+            <div id="book">
+                <div class="ride-form">
+                    <h2>Book a Ride</h2>
+                    <div class="form-group">
+                        <input type="text" id="pickup" placeholder="Enter pickup location">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="dropoff" placeholder="Enter dropoff location">
+                    </div>
+                    <button onclick="bookRide()">Find Rides</button>
+                </div>
+            </div>
+
+            <!-- Car Animation -->
+            <div class="car-animation">
+                <div class="car"></div>
+            </div>
+
+            <!-- Available Rides (Driver Dashboard) -->
+            <div id="drive" style="display: none;">
+                <h2>Available Rides</h2>
+                <div class="ride-list" id="rideList"></div>
+            </div>
+        </div>
+
+        <!-- Right Side: Map -->
+        <div class="right-side">
+            <div class="map-container" id="map"></div>
+        </div>
+    </div>
+  
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleLoginModal(false)">&times;</span>
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email">
+            <input type="password" id="login-password" placeholder="Password">
+            <button onclick="handleLogin()">Login</button>
+            <p>Don't have an account? <a href="#" onclick="toggleSignupModal(true)">Signup</a></p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleSignupModal(false)">&times;</span>
+            <h2>Signup</h2>
+            <input type="text" id="signup-name" placeholder="Full Name">
+            <input type="email" id="signup-email" placeholder="Email">
+            <input type="password" id="signup-password" placeholder="Password">
+            <button onclick="handleSignup()">Signup</button>
+            <p>Already have an account? <a href="#" onclick="toggleLoginModal(true)">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Drive Modal -->
+    <!-- Drive Modal -->
+<div id="driveModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="toggleDriveModal(false)">&times;</span>
+        <h2>Driver Details</h2>
+        <input type="text" id="driver-name" placeholder="Full Name" required>
+        
+        <!-- Age Input with Validation -->
+        <div class="form-group">
+            <label>Age (20-70)</label>
+            <input type="number" id="driver-age" min="20" max="70" placeholder="Enter age" required>
+        </div>
+
+        <select id="driver-gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        
+        <input type="tel" id="driver-contact" placeholder="Contact Number" pattern="[0-9]{10}" required>
+        <input type="text" id="driver-license" placeholder="Driving License Number" required>
+
+        <!-- Enhanced Time Selection -->
+        <div class="form-group">
+            <label>Pickup Time</label>
+            <div class="time-group">
+                <input type="time" id="pickup-time" required>
+                <select id="time-format" required>
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Location Inputs -->
+        <div class="form-group">
+            <input type="text" id="driver-from" placeholder="From Location" required>
+        </div>
+        <div class="form-group">
+            <input type="text" id="driver-to" placeholder="To Location" required>
+        </div>
+
+        <button onclick="handleDriverDetails()">Submit</button>
+    </div>
+</div>
+
+    <!-- Footer with Logo -->
+    <footer>
+        <div class="footer-content">
+            <img src="https://www.freepnglogos.com/uploads/company-logo-png/company-logo-transparent-png-19.png" alt="CityRide Logo" class="logo">
+            <p>&copy; 2023 CityRide. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scriptride.js"></script>
+</body>
+</html>
